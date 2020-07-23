@@ -45,3 +45,17 @@ You could edit the key under SampleAppKeys.Java
             (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF};
 ```
 
+For variable **pcdCap2In**, I just init as :
+```Java
+byte[] pcdCap2In = new byte[0];
+```
+PCD is just a abbreviation of **Proximity Coupling Device**
+There are 6 mode we can set for it (from 0x00 to 0x06) according to the JavaDoc from Mifare SDK
+
+If The authenticate is success , you could be able to execute the below line, othervise it will thought exception:
+```Java
+result = plusSL3.multiBlockRead(IPlusSL3.ReadMode.Plain_ResponseMACed_CommandMACed, 8, 3);
+```
+For the number "8" , which is referring to the memory address, following the memory address you checked on NXP Tag Info APP (in our situation, the data is store in 0x08 memory location)
+This is a very important field, if you are reading the incorrect memory address, you wouldn't be able to read the memory content
+For Number "3", which means how many memory block should be read from the memory, ususally 3 is enought, you could fix the memory address and increase this number to read more memory
