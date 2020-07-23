@@ -972,9 +972,12 @@ public class MainActivity extends Activity {
                 try {
                     stringBuilder.append(mString.toString());
                     stringBuilder.append("\n\n");
-                    byte sector = (byte)40;
+                    byte sector = (byte)2;
                     /* ALL WORK RELATED TO MIFARE PLUS SL3 card. */
-                    plusSL3.authenticateFirst(0x4004, objKEY_AES128, pcdCap2In);
+                    //Get the memory address from sector
+                    int memoryaddress = plusSL3.sectorNumberToBlockNumberForAESKeys(sector);
+                    //Auth the mifare card, the Factory default key is FFFFFFFFFFFFFFFF, please refere to the SampleAppKeys.java for changing the key if the mifare plus auth is changed
+                    plusSL3.authenticateFirst(memoryaddress, objKEY_AES128, pcdCap2In);
                     result = plusSL3.multiBlockRead(IPlusSL3.ReadMode.Plain_ResponseMACed_CommandMACed, 8, 3);
 
                     stringBuilder.append("\n\n");
