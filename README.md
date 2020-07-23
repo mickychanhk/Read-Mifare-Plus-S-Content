@@ -27,6 +27,21 @@ int memoryaddress = plusSL3.sectorNumberToBlockNumberForAESKeys(sector);
 plusSL3.authenticateFirst(memoryaddress, objKEY_AES128, pcdCap2In);
 result = plusSL3.multiBlockRead(IPlusSL3.ReadMode.Plain_ResponseMACed_CommandMACed, 8, 3);
 ```
+Usually the mifare memory address start from **0x4004** which is referred to **sector 2** in our example
 
+After finding the memory address, you are require to authenticate your card : 
 
+```Java
+plusSL3.authenticateFirst(memoryaddress, objKEY_AES128, pcdCap2In);
+```
+
+For the variable **objKEY_AES128**, which is provided by NXP library, For mifare plus s which is using AES algorithm, which require using a 16 byte as a key to authnicate the card. The factory key of the card should be 16 byte all in 0xFF
+
+You could edit the key under SampleAppKeys.Java
+```Java
+ public static final byte[] KEY_AES128 = {(byte) 0xFF, (byte) 0xFF,
+            (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF,
+            (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF,
+            (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF};
+```
 
