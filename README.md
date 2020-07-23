@@ -1,7 +1,7 @@
 # Read Mifare Plus S Card Content in Android
 I found out that it is very difficult to find how to read mifare plus s card memory content online, so I would like to create a java example for that
 
-My repository is basically download from TapLinx which is provided android SDK and provide adjustment: 
+My repository is based on TapLinx example which is provided android SDK for Mifare: 
 https://www.mifare.net/en/products/tools/taplinx/
 
 I added the changes : 
