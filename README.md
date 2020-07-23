@@ -58,4 +58,6 @@ result = plusSL3.multiBlockRead(IPlusSL3.ReadMode.Plain_ResponseMACed_CommandMAC
 ```
 For the number "8" , which is referring to the memory address, following the memory address you checked on NXP Tag Info APP (in our situation, the data is store in 0x08 memory location)
 This is a very important field, if you are reading the incorrect memory address, you wouldn't be able to read the memory content
+
+
 For Number "3", which means how many memory block should be read from the memory, ususally 3 is enought, you could fix the memory address and increase this number to read more memory
